@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import BackgroundTasks
+
+var keySAVETIME = "keyB"
+var keyF = "keyV"
+
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        UserDefaults.standard.set(nil, forKey: keySAVETIME)
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -25,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -34,20 +41,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
+        // This may occur due to temporary interruptions (ex. an incoming phone call)
+        
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
+        // Use this method to undo the changes made on entering the background
+        if boolBTN == true {
+            var Date1 = UserDefaults.standard.object(forKey: keySAVETIME) as! Date
+            var kq1 = Date1.timeIntervalSince1970
+            var kq2 = Date().timeIntervalSince1970
+            
+            var Date2 = Int(kq2) - Int(kq1)
+            
+            if Date2 > count{
+                count = 0
+            }
+            else {
+                count -= Date2
+            }
+            
+            
+        }
     }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
+    func sceneDidEnterBackground(_ scene: UIScene) { 
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+       if boolBTN == true{
+            UserDefaults.standard.set(Date(), forKey: keySAVETIME)
+        }
+    
     }
-
-
+    
 }
 

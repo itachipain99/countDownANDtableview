@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        g =   self.contentView.bounds.size.height 
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
